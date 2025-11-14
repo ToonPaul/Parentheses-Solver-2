@@ -4,27 +4,27 @@
 
 public class solver {
     public static boolean isValid(String s){
-        String firstCharcter = s.substring(0,1);
+        //String firstCharcter = s.substring(0,1);
         s = s.substring(1);
         while(s.length()>0){
             boolean removed = false;
-        if(firstCharacter.equals("(")){
+        if(s.substring(0,1).equals("(")){
             for(int i = 0; i < s.length(); i++){
-                if(s.chatAt(i).equals(")")){
+                if(s.substring(i, i+1).equals(")")){
                     s = s.substring(0,i+1) + s.substring(i+2);
                     removed = true;
                 }
             }
-        } else if (firstCharacter.equals("[")){
+        } else if (s.substring(0,1).equals("[")){
             for(int i = 0; i < s.length(); i++){
-                if(s.chatAt(i).equals("]")){
+                if(s.substring(i, i+1).equals("]")){
                     s = s.substring(0,i+1) + s.substring(i+2);
                      removed = true;
                 }
             }
-            } else if (firstCharacter.equals("{")){
+            } else if (s.substring(0,1).equals("{")){
             for(int i = 0; i < s.length(); i++){
-                if(s.chatAt(i).equals("}")){
+                if(s.substring(i, i+1).equals("}")){
                     s = s.substring(0,i+1) + s.substring(i+2);
                      removed = true;
                 }}
