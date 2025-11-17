@@ -4,17 +4,18 @@
 
 public class solver {
     public static boolean isValid(String s){
-        //String firstCharcter = s.substring(0,1);
         s = s.substring(1);
         while(s.length()>0){
             boolean removed = false;
-        if(s.substring(0,1).equals("(")){
+        //If the first character is "(", then check all the other characters in the string for a match ")" character
+            if(s.substring(0,1).equals("(")){
             for(int i = 0; i < s.length(); i++){
                 if(s.substring(i, i+1).equals(")")){
                     s = s.substring(0,i+1) + s.substring(i+2);
                     removed = true;
                 }
             }
+        //If the first character is "[", then check all the other characters in the string for a match "]" character
         } else if (s.substring(0,1).equals("[")){
             for(int i = 0; i < s.length(); i++){
                 if(s.substring(i, i+1).equals("]")){
@@ -22,12 +23,14 @@ public class solver {
                      removed = true;
                 }
             }
-            } else if (s.substring(0,1).equals("{")){
+        //If the first character is "{", then check all the other characters in the string for a match "}" character    
+        } else if (s.substring(0,1).equals("{")){
             for(int i = 0; i < s.length(); i++){
                 if(s.substring(i, i+1).equals("}")){
                     s = s.substring(0,i+1) + s.substring(i+2);
                      removed = true;
                 }}
+            //If the string starts with a closing parenthese, the string should immidently return false
             } else{
             return false;
             }
@@ -38,13 +41,13 @@ public class solver {
         return true;
     }
     public static void main(String[] args){
-        System.out.println(isValid("(){}[]")); //true
-        //System.out.println(isValid("(]")); //false
-        //System.out.println(isValid("([{({})}])")); //true
-        //System.out.println(isValid("(([]){})")); //true
-        //System.out.println(isValid("{}[())()(]")); //false
-        //System.out.println(isValid("(){}{")); //false
-        //System.out.println(isValid("([)]")); //false
-        //System.out.println(isValid("([{}([)])]")); //false
+        //System.out.println(isValid("(){}[]")); //true, wrong result
+        //System.out.println(isValid("(]")); //false, correct
+        //System.out.println(isValid("([{({})}])")); //true, error
+        //System.out.println(isValid("(([]){})")); //true, error
+        //System.out.println(isValid("{}[())()(]")); //false, correct
+        //System.out.println(isValid("(){}{")); //false,error
+        //System.out.println(isValid("([)]")); //false, correct
+        //System.out.println(isValid("([{}([)])]")); //false, error
     }
     }
